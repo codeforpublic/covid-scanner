@@ -9,16 +9,18 @@ const ScannerPage = () => {
   console.log(qrData)
   return (
     <div className="container mx-auto relative p-4 mt-20">
-      <h1 className="font-semibold text-4xl">สแกน QR CODE</h1>
-      <p className="font-light text-sm" style={{ color: '#F1F5FA' }}>
-        สแกน QR Code เพื่อดูความเสี่ยง COVID-19
-      </p>
-      <div
-        onClick={() => {
-          setQrData(TEST_TOKEN)
-        }}
-      >
-        CLICK
+      <div className="mb-4">
+        <h1 className="font-semibold text-4xl">สแกน QR CODE</h1>
+        <p className="font-light text-sm" style={{ color: '#F1F5FA' }}>
+          สแกน QR Code เพื่อดูความเสี่ยง COVID-19
+        </p>
+        <div
+          onClick={() => {
+            setQrData(TEST_TOKEN)
+          }}
+        >
+          CLICK
+        </div>
       </div>
       <QrReader
         delay={300}
