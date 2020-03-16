@@ -66,6 +66,7 @@ export const Result = ({ result, onRescan }) => {
   console.log('decoded -> decoded', decoded)
   if (!decoded) return null
   const createdAt = moment(decoded.iat * 1000).locale('th')
+  const scanAt = moment().locale('th')
   return (
     <div
       className={`animated ${
@@ -100,7 +101,7 @@ export const Result = ({ result, onRescan }) => {
             {LABEL[decoded.data.color]}
           </span>
         </div>
-        <hr />
+        <hr style={{ borderColor: '#666666' }} />
         <div className="flex py-10 mx-6">
           <Item label="อายุ" value={decoded.data.age} />
           <Item label="เพศ" value={GENDER[decoded.data.gender]} />
@@ -114,7 +115,10 @@ export const Result = ({ result, onRescan }) => {
         <div className="flex py-10 mx-6">
           <ListItem label="มีประวัติเดินทาง" secondLine="ในประเทศกลุ่มเสี่ยง" />
         </div>
-        <div className="fixed bottom-0">
+        <div className="fixed bottom-0 w-full text-center pb-10">
+          <div className="font-light text-xs pb-1" style={{ color: '#A6A6A6' }}>
+            สแกนเมื่อ: {scanAt.format('D MMM')} {scanAt.add(543, 'year').year()}
+          </div>
           <button
             className="py-4 px-24 rounded-full font-semibold mx-auto"
             style={{ backgroundColor: '#666' }}
