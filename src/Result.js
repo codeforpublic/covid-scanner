@@ -49,7 +49,7 @@ const Item = ({ label, value, className }) => (
     <div className="font-light text-sm" style={{ color: '#A6A6A6' }}>
       {label}
     </div>
-    <div className="font-medium">{value}</div>
+    <div className="font-semibold">{value}</div>
   </div>
 )
 const ListItem = ({ label, checked, color }) => (
@@ -67,7 +67,7 @@ const ListItem = ({ label, checked, color }) => (
       {checked ? <YesIcon /> : <NoIcon />}
     </div>
     <div className="flex-1 mt-1">
-      <div className="font-medium">{label}</div>
+      <div className="font-semibold">{label}</div>
     </div>
   </div>
 )
