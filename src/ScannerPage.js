@@ -10,13 +10,13 @@ const ScannerPage = () => {
 
   const decoded = useMemo(() => {
     if (qrData) {
-      const { error } = decodeJWT(qrData)
-      if (!error) return decoded
+      const result = decodeJWT(qrData)
+      const { error } = result
+      if (!error) return result
       console.log(error)
       setError({
         title: error
       })
-
       setTimeout(() => {
         console.log('set error')
         setError({})
@@ -28,15 +28,19 @@ const ScannerPage = () => {
 
   console.log(qrData)
   return (
-    <div className="container mx-auto relative  p-4 mt-20">
-      <h1 className="font-semibold text-4xl">สแกน QR CODE</h1>
-      <p className="font-light">สแกน QR Code เพื่อดูความเสี่ยง COVID-19</p>
-      <div
-        onClick={() => {
-          setQrData(TEST_TOKEN)
-        }}
-      >
-        CLICK
+    <div className="container mx-auto relative p-4 mt-20">
+      <div className="mb-4">
+        <h1 className="font-semibold text-4xl">สแกน QR CODE</h1>
+        <p className="font-light text-sm" style={{ color: '#F1F5FA' }}>
+          สแกน QR Code เพื่อดูความเสี่ยง COVID-19
+        </p>
+        <div
+          onClick={() => {
+            setQrData(TEST_TOKEN)
+          }}
+        >
+          CLICK
+        </div>
       </div>
       <QrReader
         delay={300}
