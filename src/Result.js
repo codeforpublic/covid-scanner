@@ -70,7 +70,7 @@ export const Result = ({ result, onRescan }) => {
   return (
     <div
       className={`animated ${
-        closing ? 'fadeOutDownBig' : 'fadeInUpBig'
+        closing ? 'slideOutDown' : 'fadeInUpBig'
       } fixed w-full h-full left-0 top-0 z-10 overflow-auto`}
       style={{
         animationDuration: '200ms',
