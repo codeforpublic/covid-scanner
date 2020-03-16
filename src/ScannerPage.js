@@ -38,7 +38,7 @@ const ScannerPage = () => {
         delay={300}
         style={{ width: '100%' }}
         onScan={data => {
-          if (data) setQrData(data)
+          if (data && !qrData) setQrData(data)
         }}
       />
       {error.title && (
