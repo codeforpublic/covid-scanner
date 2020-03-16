@@ -65,7 +65,8 @@ export const Result = ({ result, onRescan }) => {
   }, [setClosing, onRescan])
   console.log('decoded -> decoded', decoded)
   if (!decoded) return null
-  const createdAt = moment(decoded.iat * 1000).locale('th')
+  const { iat, color, age, gender } = decoded
+  const createdAt = moment(iat * 1000).locale('th')
   const scanAt = moment().locale('th')
   return (
     <div
@@ -78,10 +79,7 @@ export const Result = ({ result, onRescan }) => {
         boxShadow: '0px 0px 5px rgba(0,0,0,0.3)'
       }}
     >
-      <div
-        style={{ backgroundColor: BG_COLOR[decoded.data.color] }}
-        className="h-3"
-      ></div>
+      <div style={{ backgroundColor: BG_COLOR[color] }} className="h-3"></div>
       <div className="container py-4">
         {/* {result.toString()} */}
         <div
@@ -92,25 +90,17 @@ export const Result = ({ result, onRescan }) => {
         </div>
         <div
           className="text-3xl px-12 rounded-lg py-2 text-center inline-block mb-6 mt-3 mx-4"
-          style={{ backgroundColor: BG_COLOR[decoded.data.color] }}
+          style={{ backgroundColor: BG_COLOR[color] }}
         >
-          <span
-            style={{ color: FONT_COLOR[decoded.data.color] }}
-            className="font-semibold"
-          >
-            {LABEL[decoded.data.color]}
+          <span style={{ color: FONT_COLOR[color] }} className="font-semibold">
+            {LABEL[color]}
           </span>
         </div>
         <hr style={{ borderColor: '#666666' }} />
         <div className="flex py-10 mx-6">
-          <Item label="อายุ" value={decoded.data.age} />
-          <Item label="เพศ" value={GENDER[decoded.data.gender]} />
-          <Item
-            label="สร้างเมื่อ"
-            value={`${createdAt.format('D MMM')} ${createdAt
-              .add(543, 'year')
-              .year()}`}
-          />
+          <Item label="อายุ" value={age} />
+          <Item label="เพศ" value={GENDER[gender]} />
+          <Item label="สร้างเมื่อ" value={`${createdAt.fromNow()}`} />
         </div>
         <div className="flex py-10 mx-6">
           <ListItem label="มีประวัติเดินทาง" secondLine="ในประเทศกลุ่มเสี่ยง" />
