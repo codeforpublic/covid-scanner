@@ -29,8 +29,8 @@ const GENDER = {
   F: 'หญิง'
 }
 
-const Item = ({ label, value }) => (
-  <div className="mr-10">
+const Item = ({ label, value, className }) => (
+  <div className={className}>
     <div className="font-light text-sm" style={{ color: '#A6A6A6' }}>
       {label}
     </div>
@@ -84,7 +84,7 @@ export const Result = ({ result, onRescan }) => {
       <div className="container py-4">
         {/* {result.toString()} */}
         <div
-          className="font-light text-lg px-6 pt-6"
+          className="font-light text-lg px-8 pt-6"
           style={{ color: '#A6A6A6' }}
         >
           ระดับเสี่ยง
@@ -101,9 +101,13 @@ export const Result = ({ result, onRescan }) => {
           </span>
         </div>
         <div style={{ height: 1, width: '100%', backgroundColor: '#666' }} />
-        <div className="flex py-10 mx-6">
-          <Item label="อายุ" value={decoded.data.age} />
-          <Item label="เพศ" value={GENDER[decoded.data.gender]} />
+        <div className="flex py-10 mx-8">
+          <Item label="อายุ" value={decoded.data.age} className="mr-12" />
+          <Item
+            label="เพศ"
+            value={GENDER[decoded.data.gender]}
+            className="mr-12"
+          />
           <Item
             label="สร้างเมื่อ"
             value={`${createdAt.format('D MMM')} ${createdAt
@@ -111,7 +115,7 @@ export const Result = ({ result, onRescan }) => {
               .year()}`}
           />
         </div>
-        <div className="flex py-10 mx-6">
+        <div className="flex py-10 mx-8">
           <ListItem label="มีประวัติเดินทาง" secondLine="ในประเทศกลุ่มเสี่ยง" />
         </div>
         <div className="fixed bottom-0">
