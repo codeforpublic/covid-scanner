@@ -1,6 +1,5 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import moment from 'moment-timezone'
-import { decodeJWT } from './utils/jwt'
 
 const MOCK = {
   color: 'red',
@@ -52,10 +51,6 @@ const ListItem = ({ label, icon, secondLine }) => (
 export const Result = ({ result, onRescan }) => {
   const [closing, setClosing] = useState(false)
 
-  const decoded = useMemo(() => {
-    if (result) return decodeJWT(result)
-    return null
-  }, [result])
   const handleClose = useCallback(() => {
     setClosing(true)
     setTimeout(() => {
@@ -63,9 +58,8 @@ export const Result = ({ result, onRescan }) => {
       setClosing(false)
     }, 200)
   }, [setClosing, onRescan])
-  console.log('decoded -> decoded', decoded)
-  if (!decoded) return null
-  const { iat, color, age, gender } = decoded
+  if (!result) return null
+  const { iat, color, age, gender } = result
   const createdAt = moment(iat * 1000).locale('th')
   const scanAt = moment().locale('th')
   return (

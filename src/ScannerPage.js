@@ -1,11 +1,31 @@
 import QrReader from 'react-qr-reader'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
+import { decodeJWT, TEST_TOKEN } from './utils/jwt'
 import { Result } from './Result'
-import { TEST_TOKEN } from './utils/jwt'
 
 const ScannerPage = () => {
   const [qrData, setQrData] = useState(null)
+  const [error, setError] = useState({})
+
+  const decoded = useMemo(() => {
+    if (qrData) {
+      const { error } = decodeJWT(qrData)
+      if (!error) return decoded
+      console.log(error)
+      setError({
+        title: error
+      })
+
+      setTimeout(() => {
+        console.log('set error')
+        setError({})
+      }, 5000)
+      return null
+    }
+    return null
+  }, [qrData])
+
   console.log(qrData)
   return (
     <div className="container mx-auto relative  p-4 mt-20">
@@ -25,9 +45,20 @@ const ScannerPage = () => {
           if (data) setQrData(data)
         }}
       />
+      {error.title && (
+        <div
+          className={`animated fadeOut text-center p-4 text-xl`}
+          style={{
+            animationDuration: '200ms',
+            animationDelay: '3s'
+          }}
+        >
+          {error.title}
+        </div>
+      )}
 
       <div className={`${qrData ? 'block' : 'hidden'}`}>
-        <Result result={qrData} onRescan={() => setQrData(null)} />
+        <Result result={decoded} onRescan={() => setQrData(null)} />
       </div>
     </div>
   )

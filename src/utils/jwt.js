@@ -4,5 +4,10 @@ export const TEST_TOKEN =
   'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im5xZ2VZU1RxeXphdzQzdHl0TkVrd3dYU2xDektmRVY3ekpXc2ItZjZFMFUifQ.eyJkYXRhIjp7ImdlbmRlciI6Ik0iLCJjb2xvciI6ImdyZWVuIiwidXNlcklkIjoiN0QyQUZBMEMtNUQwQy00RjBBLTlDQjQtMTMzRTI1QUYyQzA2IiwiYWdlIjoyNH0sImlhdCI6MTU4NDM3NTg0OCwiZXhwIjoxNTg0Mzg2NjQ4LCJpc3MiOiJhbm9ueW1vdXMifQ.OI1ks6taPgQv2E04utWU1ZpPBBXlIsltxgy2a348LFWpQGPFs-8rwiuK_G2ihNv9dfBKzxn89xnRkf39Ecr4y--0-JqLWJEvdA6ig0gxa30W2CxtxiWZ3kF1VWzediFvCC19Dp7G5NbjutgGtr9QEOi44K35JM93WntQAI9440DWFGxJbJj4WioZVRA20xuAbxeLCTwLtSMx_3R0qlS9Ihrr6vTPC2WAF-hpyojAvhCyWlPNo-opHA3-y4jb-wpZaiyNocuJpV-oYjfpLRXGPpTOUANtHkyK8ovAwuDzvuz3BP2ood1oDiRoq9swA367RsLFvWK-XsxdLBaNq2k3VEf-pOTOjux5ldcHKr4-LzOgE66ZxjWkU41SYxqZP3OZELkHY8f87uDPu_-fooLiUWeuYfXzjr9rOJkZPesVkQWMEV99HbfS3IRTqgf5C1b-wdb2rclPcBR53drOIk11IUTOX0FN3Il5Vk-_iabxJJgUOmmD8SmYYu_ViV5EzsXUdJepeDWLfHl6k15zzt2A9P16gex8XW3vQ6lds7tYpR2otaWbc1oyvCfY0rEoXewBqDSklNsK7ugUcvURsJotL4nPzKZFbm3H4X-yKmsLn6JZsSzdk5C1NuiBBbzWoxKrBDqWuyLNz1OCbvM-hRe8YfADt3xwh3l1F79-dQOOU5Q'
 
 export const decodeJWT = token => {
-  return jwtDecode(token)
+  try {
+    return jwtDecode(token)
+  } catch (e) {
+    console.log(e)
+    return { error: 'QR Code ไม่ถูกต้อง' }
+  }
 }
