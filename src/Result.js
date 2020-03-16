@@ -83,8 +83,7 @@ export const Result = ({ result, onRescan }) => {
     }, 200)
   }, [setClosing, onRescan])
   if (!result) return null
-  const { iat, data = {} } = result
-  const { color, age, gender } = data
+  const { iat, color, age, gender } = result
   const createdAt = moment(iat * 1000).locale('th')
   const scanAt = moment().locale('th')
   const hasSymptom = CONDITION[color].symptom

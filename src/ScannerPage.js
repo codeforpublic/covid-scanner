@@ -11,8 +11,9 @@ const ScannerPage = () => {
   const decoded = useMemo(() => {
     if (qrData) {
       const result = decodeJWT(qrData)
+      console.log(result)
       const { error } = result
-      if (!error && result.data !== undefined) {
+      if (!error && result.color !== undefined) {
         return result
       }
       setError({
@@ -25,8 +26,6 @@ const ScannerPage = () => {
     }
     return null
   }, [qrData])
-
-  console.log(qrData)
   return (
     <div className="container mx-auto relative p-4 mt-20">
       <div className="mb-4">
