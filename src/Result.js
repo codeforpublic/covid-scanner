@@ -79,7 +79,7 @@ export const Result = ({ result, onRescan }) => {
       }}
     >
       <div
-        style={{ backgroundColor: BG_COLOR[MOCK.color] }}
+        style={{ backgroundColor: BG_COLOR[decoded.data.color] }}
         className="h-3"
       ></div>
       <div className="container py-4">
@@ -91,7 +91,7 @@ export const Result = ({ result, onRescan }) => {
           ระดับเสี่ยง
         </div>
         <div
-          className="text-3xl px-16 rounded-lg py-2 text-center inline-block mb-6 mt-3 mx-4"
+          className="text-3xl px-12 rounded-lg py-2 text-center inline-block mb-6 mt-3 mx-4"
           style={{ backgroundColor: BG_COLOR[decoded.data.color] }}
         >
           <span
