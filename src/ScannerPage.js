@@ -1,7 +1,7 @@
 import QrReader from 'react-qr-reader'
 import React, { useMemo, useState } from 'react'
 
-import { decodeJWT, TEST_TOKEN } from './utils/jwt'
+import { decodeJWT } from './utils/jwt'
 import { Result } from './Result'
 
 const ScannerPage = () => {
@@ -12,15 +12,15 @@ const ScannerPage = () => {
     if (qrData) {
       const result = decodeJWT(qrData)
       const { error } = result
-      if (!error) return result
-      console.log(error)
+      if (!error && result.data !== undefined) {
+        return result
+      }
       setError({
-        title: error
+        title: error || 'ข้อมูลไม่ถูกต้อง'
       })
       setTimeout(() => {
-        console.log('set error')
         setError({})
-      }, 5000)
+      }, 4000)
       return null
     }
     return null
@@ -34,13 +34,6 @@ const ScannerPage = () => {
         <p className="font-light text-sm" style={{ color: '#F1F5FA' }}>
           สแกน QR Code เพื่อดูความเสี่ยง COVID-19
         </p>
-        <div
-          onClick={() => {
-            setQrData(TEST_TOKEN)
-          }}
-        >
-          CLICK
-        </div>
       </div>
       <QrReader
         delay={300}

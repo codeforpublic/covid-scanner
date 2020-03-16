@@ -1,14 +1,10 @@
 import { css } from '@emotion/core'
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import moment from 'moment-timezone'
 
 import { ReactComponent as NoIcon } from './assets/no.svg'
 import { ReactComponent as YesIcon } from './assets/yes.svg'
 
-const MOCK = {
-  color: 'red',
-  label: 'เสี่ยงมาก'
-}
 const BG_COLOR = {
   red: '#F03636',
   green: '#2FC20B',
