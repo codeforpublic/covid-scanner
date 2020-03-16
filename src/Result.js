@@ -49,7 +49,7 @@ const Item = ({ label, value, className }) => (
     <div className="font-light text-sm" style={{ color: '#A6A6A6' }}>
       {label}
     </div>
-    <div className="font-semibold">{value}</div>
+    <div className="font-medium">{value}</div>
   </div>
 )
 const ListItem = ({ label, checked, color }) => (
@@ -67,7 +67,7 @@ const ListItem = ({ label, checked, color }) => (
       {checked ? <YesIcon /> : <NoIcon />}
     </div>
     <div className="flex-1 mt-1">
-      <div className="font-semibold">{label}</div>
+      <div className="font-medium">{label}</div>
     </div>
   </div>
 )
@@ -109,7 +109,7 @@ export const Result = ({ result, onRescan }) => {
           ระดับเสี่ยง
         </div>
         <div
-          className="text-3xl px-12 rounded-lg py-2 text-center inline-block mb-6 mt-3 mx-4"
+          className="text-3xl px-12 rounded-lg py-2 text-center inline-block mb-6 mt-3 mx-6"
           style={{ backgroundColor: BG_COLOR[color] }}
         >
           <span style={{ color: FONT_COLOR[color] }} className="font-semibold">
@@ -117,12 +117,12 @@ export const Result = ({ result, onRescan }) => {
           </span>
         </div>
         <hr style={{ borderColor: '#666666' }} />
-        <div className="flex py-10 mx-6">
+        <div className="flex py-10 mx-8">
           <Item label="อายุ" value={age || '-'} className="mr-12" />
           <Item label="เพศ" value={GENDER[gender] || '-'} className="mr-12" />
           <Item label="สร้างเมื่อ" value={`${createdAt.fromNow()}`} />
         </div>
-        <div className="flex flex-col mx-6">
+        <div className="flex flex-col mx-8">
           <ListItem
             label={CONDITION_LABEL.symptom[hasSymptom]}
             checked={hasSymptom}
