@@ -12,6 +12,7 @@
     "@emotion/styled": "^10.0.27",
     "next": "9.3.0",
     "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react-dom": "16.13.0",
+    "react-qr-reader": "^2.2.1"
   }
 }
