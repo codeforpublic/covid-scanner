@@ -140,7 +140,7 @@ export const Result = ({ result, onRescan }) => {
           </div>
           <button
             className="py-4 px-24 rounded-full font-semibold mx-auto"
-            style={{ backgroundColor: '#666' }}
+            style={{ backgroundColor: '#3b3d49' }}
             onClick={handleClose}
           >
             สแกนใหม่
