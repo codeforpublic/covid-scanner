@@ -64,9 +64,16 @@ export const Result = ({ result, onRescan }) => {
         boxShadow: '0px 0px 5px rgba(0,0,0,0.3)'
       }}
     >
+      <div
+        style={{ backgroundColor: BG_COLOR[MOCK.color] }}
+        className="h-3"
+      ></div>
       <div className="container py-4">
         {/* {result.toString()} */}
-        <div className="font-light text-lg px-6" style={{ color: '#A6A6A6' }}>
+        <div
+          className="font-light text-lg px-6 pt-6"
+          style={{ color: '#A6A6A6' }}
+        >
           ระดับเสี่ยง
         </div>
         <div
@@ -89,8 +96,14 @@ export const Result = ({ result, onRescan }) => {
         <div className="flex py-10 mx-6">
           <ListItem label="มีประวัติเดินทาง" secondLine="ในประเทศกลุ่มเสี่ยง" />
         </div>
-        <div>
-          <button onClick={handleClose}>สแกนใหม่</button>
+        <div className="fixed bottom-0">
+          <button
+            className="py-4 px-24 rounded-full font-semibold mx-auto"
+            style={{ backgroundColor: '#666' }}
+            onClick={handleClose}
+          >
+            สแกนใหม่
+          </button>
         </div>
       </div>
     </div>
