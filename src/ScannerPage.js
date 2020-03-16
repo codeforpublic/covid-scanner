@@ -21,7 +21,9 @@ const ScannerPage = () => {
       <QrReader
         delay={300}
         style={{ width: '100%' }}
-        onScan={data => setQrData(data)}
+        onScan={data => {
+          if (data) setQrData(data)
+        }}
       />
 
       <div className={`${qrData ? 'block' : 'hidden'}`}>
