@@ -10,6 +10,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>สแกน QR Code ดูความเสี่ยง COVID-19</title>
+          <meta name="theme-color" content="#303342" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          ></meta>
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
